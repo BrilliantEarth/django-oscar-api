@@ -27,6 +27,7 @@ api_root = get_api_class("views.root", "api_root")
         "BasketLineDetail",
     ],
 )
+(WishListListView, ) = get_api_classes("views.wishlist", ["WishListListView",])
 
 (StockRecordDetail, PartnerList, PartnerDetail) = get_api_classes(
     "views.admin.partner", ["StockRecordDetail", "PartnerList", "PartnerDetail"]
@@ -180,6 +181,7 @@ urlpatterns = [
         LineAttributeDetail.as_view(),
         name="lineattribute-detail",
     ),
+    path("wishlists/", WishListListView.as_view(), name="customer-wishlist"),
     path("products/", ProductList.as_view(), name="product-list"),
     path("products/<int:pk>/", ProductDetail.as_view(), name="product-detail"),
     path("products/<int:pk>/price/", ProductPrice.as_view(), name="product-price"),
